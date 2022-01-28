@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./index.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    data: [
+      { todo: "cooking" },
+      { todo: "reading " },
+      { todo: "playing" },
+      { todo: "shopping" },
+      { todo: "cleaning" },
+    ],
+  };
+  render() {
+    const {data} = this.state;
+    console.log(data);
+
+    return (
+      <div className="app">
+        <form>
+          <input />
+          <button>Add</button>
+        </form>
+        <h1>To Do List</h1>
+        <ul>
+          {data.map((item, index) => {
+            return <li key={index}>{item.todo}</li>;
+          })}
+        </ul>
+      </div>
+    );
+  }
 }
-
 export default App;
